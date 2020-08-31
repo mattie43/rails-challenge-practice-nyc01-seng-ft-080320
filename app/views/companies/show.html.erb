@@ -1,0 +1,16 @@
+<h1><%= @company.name %></h1>
+<ul>
+<% @company.offices.each do |o| %>
+<li>Company: <%= o.company.name %><br>
+Building: <%= o.building.name %></li><br><br>
+<% end %>
+</ul>
+Rent total: <%= @company.total_rent %><br><br>
+Employee list:<br><br>
+<%= button_to 'Add employee', new_employee_path %>
+<ul>
+<% @company.employees.each do |e| %>
+<li><%= e.name %>
+</li><br>
+<% end %>
+</ul>

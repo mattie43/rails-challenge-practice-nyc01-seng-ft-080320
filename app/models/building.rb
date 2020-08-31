@@ -1,4 +1,6 @@
 class Building < ApplicationRecord
+  has_many :offices
+  validates :name, :country, :address, :rent_per_floor, :number_of_floors, presence: true
 
   def number_of_floors_available
     # Will not work until relationships and schema are corretly setup
@@ -12,6 +14,10 @@ class Building < ApplicationRecord
 
   def empty_offices
     number_of_floors_available.map { |f| offices.build(floor: f) }
+  end
+  
+  def total_rent
+    self.offices.count * self.rent_per_floor
   end
 
 end

@@ -1,0 +1,9 @@
+<h1><%= @building.name %></h1>
+<h3><%= "#{@building.country}, #{@building.address}" %></h3>
+<h3>Cost of rent: $<%= @building.rent_per_floor %></h3>
+<h3>Number of floors: <%= @building.number_of_floors %></h3>
+<h3>Offices currently occupying this building:</h3>
+<% @building.offices.each do |o| %>
+<%= o.company.name %><br>
+<% end %>
+<h3>Rent total: $<%= @building.total_rent %></h3>
