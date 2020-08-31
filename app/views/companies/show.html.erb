@@ -7,7 +7,7 @@ Building: <%= o.building.name %></li><br><br>
 </ul>
 Rent total: <%= @company.total_rent %><br><br>
 Employee list:<br><br>
-<%= button_to 'Add employee', new_employee_path %>
+<%= button_to 'New Employee', companies_new_employee_path, method: :post %>
 <ul>
 <% @company.employees.each do |e| %>
 <li><%= e.name %>
