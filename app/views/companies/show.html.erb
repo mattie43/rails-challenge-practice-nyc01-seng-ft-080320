@@ -1,16 +1,18 @@
 <h1><%= @company.name %></h1>
+Buildings:
 <ul>
 <% @company.offices.each do |o| %>
-<li>Company: <%= o.company.name %><br>
-Building: <%= o.building.name %></li><br><br>
+<li><%= link_to o.building.name, building_path(o.building) %></li>
 <% end %>
 </ul>
-Rent total: <%= @company.total_rent %><br><br>
-Employee list:<br><br>
-<%= button_to 'New Employee', companies_new_employee_path, method: :post %>
+Rent total: $<%= @company.total_rent %><br><br>
+<%= button_to 'Add New Employee', new_employee_path, method: :get %> <br>
+<b>Employee list:</b><br>
 <ul>
 <% @company.employees.each do |e| %>
-<li><%= e.name %>
-</li><br>
+<li><b>Name: </b><%= e.name %><br>
+<b>Title: </b><%= e.title %><br>
+<%= button_to "Edit", edit_employee_path(e.id), method: :get, class: :employee %>
+<%= button_to "Remove", employee_path(e.id), method: :delete, class: :employee %></li><br>
 <% end %>
 </ul>

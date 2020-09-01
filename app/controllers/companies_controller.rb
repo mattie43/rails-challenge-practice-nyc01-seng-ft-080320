@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
 
     def show
         @company = Company.find(params[:id])
+        flash[:current_company_id] = @company.id
     end
 
     def new
@@ -10,17 +11,6 @@ class CompaniesController < ApplicationController
 
     def create
         @company = Company.create(company_params)
-    end
-
-    def new_employee
-        @new_employee = Employee.new
-        render :new_employee
-    end
-
-    def create_employee
-        company = Company.find(params[:id])
-        @new_employee = Employee.create(params.require(:employee).permit(:name, :title, company_id: company))
-        redirect_to company_path(company)
     end
 
     private
