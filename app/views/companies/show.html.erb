@@ -1,11 +1,11 @@
 <h1><%= @company.name %></h1>
-Buildings:
+<b>Buildings:</b>
 <ul>
 <% @company.offices.each do |o| %>
 <li><%= link_to o.building.name, building_path(o.building) %></li>
 <% end %>
 </ul>
-Rent total: $<%= @company.total_rent %><br><br>
+<b>Rent total:</b> <%= number_to_currency(@company.total_rent, precision: 0)  %><br><br>
 <%= button_to 'Add New Employee', new_employee_path, method: :get %> <br>
 <b>Employee list:</b><br>
 <ul>

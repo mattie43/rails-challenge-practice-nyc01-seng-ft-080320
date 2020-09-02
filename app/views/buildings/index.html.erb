@@ -1,6 +1,8 @@
 <h1>Building list:</h1>
 <ul>
 <% @buildings.each do |b| %>
-<li><%= "#{b.name}, available floors: #{b.number_of_floors_available.to_s}" %></li><br>
+<li><b><%= link_to b.name, building_path(b) %><br>
+    List of available floors:</b>
+    <%= b.number_of_floors_available.join(", ")%></li><br>
 <% end %>
 </ul>
